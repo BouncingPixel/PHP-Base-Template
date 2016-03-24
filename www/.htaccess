@@ -1,0 +1,19 @@
+#Main Page
+DirectoryIndex index.html index.php
+AddDefaultCharset OFF
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+# Never Use the naked domain
+RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301,NE]
+
+# Unless directory, remove trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ $1 [R=301,L]
+
+# Resolve .php file for extensionless php urls
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1\.php -f [NC]
+RewriteRule ^(.+?)/?$ $1.php [L]
