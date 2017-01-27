@@ -40,4 +40,27 @@ Site:
 
  REQUIREMENTS:
  ==============
- ( _ANY ADDITIONAL SITE REQUIREMENTS OR SET-UP INSTRUCTIONS_ )
+ ( PHP Basic Template: _STRUCTURE AND SETUP_ )
+
+ ### Folder & Directory Structure:
+
+```
+/ (project root)
+├── mockups/ ( PSD / EPS GRAPHICS FILES )
+├── working/ ( PSD / EPS GRAPHICS FILES )
+├─┬ www/ (web root)
+│ ├─┬ assets/ (All site assets and scripts)
+│ │ ├── images/
+│ │ ├── scripts/
+│ │ └── styles/
+│ ├── libs/ (Any extra libraries or scripts)
+│ ├── partials/
+│ ├── templates/
+│ ├── .htaccess (Apache config and re-write rules)
+│ ├── config.php (Site-wide Database Connection values)
+│ └── index.php
+├── .gitignore
+├── .slugignore (Heroku ignored files and directories)
+├── Procfile (Heroku Config File)
+└── composer.json (Additional Tools and dependency)
+```
