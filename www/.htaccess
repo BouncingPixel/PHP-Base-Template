@@ -1,5 +1,5 @@
 #Main Page
-DirectoryIndex index.html index.php
+DirectoryIndex index.php index.html
 AddDefaultCharset OFF
 Options -Indexes
 RewriteEngine On

@@ -1,7 +1,7 @@
 Site:
 =======
  - Site / Domain Name - URL (http://www.example.com/)
- - Build - NodeJS, PHP, PHP w/ Laravel, ColdFusion _and_ (Version Number)
+ - Build - PHP _and_ (Version Number)
  - ( CMS / Development URL's and Info. -  _IF NEEDED_ )
 
     CMS URL:  http://www.example.com/
@@ -22,15 +22,7 @@ Site:
  SERVICES:
  =========
 
- ( Pagoda Box Services - _IF PAGODA BOX HOSTED_ )
-
- - Web Service - Cloud Type w/ # of instances ( Paid / Free )
- - Cache Service - # of instances ( Paid )
- - Network File Storage Service - # of instances ( Paid )
- - SSL Service w/ Dedicated IP Address ( Paid )
- - Mail Service - # of email address [test@test.com](mailto:test@test.com) ( Free )
-
- ( Heroku Services -  _IF HEROKU HOSTED_ )
+ ( Heroku Services )
 
  - Web Service - App Type w/ # of dynos ( Paid / Free )
  - Any Heroku Add-on Service - [Service Name w/ link](link) ( Paid / Free )
