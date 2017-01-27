@@ -18,8 +18,10 @@ $page[ 'keywords' ] = "PHP";
 
 ob_start(); ?>
 	<!-- Content starts here -->
-	
+
   <h1>PHP Starter Template</h1>
+
+	<br /><br />
 
 	<p>This is a basic PHP template (and file structure) we use.  It is built to be responsive in design, can use MySQL as its database resource and is deployable on Heroku.</p>
 

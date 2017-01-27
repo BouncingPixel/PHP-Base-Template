@@ -29,7 +29,7 @@ Site:
 
  ( Other Services )
 
- - Database Type - MySQL / PostgreSQL / MongoDB
+ - Database Type - MySQL / MongoDB
  - Database Service - [Service Name w/ link](link) ( Paid / Free )
  - SSL Certificate Service - [Service Name w/ link](link) ( Paid / Free )
  - CDN - [Service Name w/ link](link) ( Paid / Free )
