@@ -10,6 +10,10 @@ global $PIECES;
 // The helper function to set up a session
 $helper->CheckSession( false );
 
+// The database connection helper using the $PICECES defined in the config.php page.
+// Un-comment this line when you want to establish a database connection and run queries.
+// $dataConnection = new MysqliData( $PIECES[ 'databaseLocation' ], $PIECES[ 'databaseUserName' ], $PIECES[ 'databasePassword' ], $PIECES[ 'database' ] );
+
 // Build the $page array
 $page = array();
 $page[ 'title' ] = "PHP Started Template";
@@ -18,13 +22,16 @@ $page[ 'keywords' ] = "PHP";
 
 ob_start(); ?>
 	<!-- Content starts here -->
+	<div style="margin:10px;">
 
-  <h1>PHP Starter Template</h1>
+	  <h1>PHP Starter Template</h1>
 
-	<br /><br />
+		<br />
 
-	<p>This is a basic PHP template (and file structure) we use.  It is built to be responsive in design, can use MySQL as its database resource and is deployable on Heroku.</p>
+		<p>This is a basic PHP template (and file structure) we use.  It is built to be responsive in design, can use MySQL as its database resource and is deployable on Heroku.</p>
 
+
+	</div>
 
 	<!-- Content ends here -->
 	<?php

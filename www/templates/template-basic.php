@@ -29,6 +29,8 @@
 
 
   <!-- JS PLACED AT THE BOTTOM OF THE PAGE FOR FASTER LOADING -->
+  <script src="assets/scripts/jquery.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
 
 </body>
 </html>
