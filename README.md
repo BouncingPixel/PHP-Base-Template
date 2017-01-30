@@ -144,5 +144,17 @@ $result = $mailer->send($message);
  if(!isset($exists) || $exists == false) {
    $container->uploadObject($values["image"], $fileData);
  }
- 
  ```
+
+  **Example: delete-object.php**
+
+  _(Repeat steps 1 - 4 in upload-object.php)_
+
+ ```
+ // 5. If object exists, Delete object.
+ if(isset($exists) && $exists == true) {
+   $container->deleteObject($image);
+ }
+ ```
+
+ 
