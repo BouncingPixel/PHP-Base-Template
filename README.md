@@ -66,7 +66,7 @@ Site:
 └── composer.json (Additional Tools and dependency)
 ```
 
- #### Directory / File Descriptions
+ **Directory / File Descriptions:**
 
   **libs** : _This directory is where we place extra PHP (or JavaScript) libraries. Typically these sort of tools/dependencies are now installed via Composer.  However, there are times when it's beneficial to store authentication or self-defined tools here._
 
