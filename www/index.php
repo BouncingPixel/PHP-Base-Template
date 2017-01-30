@@ -28,7 +28,7 @@ ob_start(); ?>
 
 		<br />
 
-		<p>This is a basic PHP template (and file structure) we use.  It is built to be responsive in design, can use MySQL as its database resource and is deployable on Heroku.</p>
+		<p>This is a basic PHP template (and file structure) we use.<br />It is built to be responsive in design, can use MySQL as its database resource and is deployable on Heroku.</p>
 
 
 	</div>
