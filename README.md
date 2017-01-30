@@ -107,3 +107,42 @@ $message = Swift_Message::newInstance('New Message')
 // Sending the message
 $result = $mailer->send($message);
 ```
+
+ **Rackspace/PHP-Opencloud** : _A Rackspace library for PHP that offers a wide range of services.  We have used the_ **object-store** _service for uploading images and assets to Rackspace containers._
+
+ [Object-store Documentation](http://docs.php-opencloud.com/en/latest/services/object-store/index.html)
+
+ **Example: upload-object.php**
+
+ ```
+ // Adding the vendor autoload.php and accessing the php-opencloud vendor
+ require dirname(__DIR__) . '/../vendor/autoload.php';
+ use OpenCloud\Rackspace;
+
+ // 1. Instantiate a Rackspace client. You can replace {authUrl} with
+ // Rackspace::US_IDENTITY_ENDPOINT or similar
+ $client = new Rackspace(Rackspace::US_IDENTITY_ENDPOINT, array(
+     'username' => 'username',
+     'apiKey'   => 'apikey',
+ ));
+
+ // 2. Obtain an Object Store service object from the client.
+ $objectStoreService = $client->objectStoreService(null, 'DFW');
+
+ // 3. Get container.
+ $container = $objectStoreService->getContainer('container-name');
+
+ // 4. Check if the file exists in Rackspace
+ $exists = $container->objectExists($values["image"]);
+
+ // 5. Open local file
+ $fileData = fopen($_FILES["image"]["tmp_name"], 'r');
+
+ // 6. Upload it! Note that while we call fopen to open the file resource, we do
+ // not call fclose at the end. The file resource is automatically closed inside
+ // the uploadObject call.
+ if(!isset($exists) || $exists == false) {
+   $container->uploadObject($values["image"], $fileData);
+ }
+ 
+ ```
