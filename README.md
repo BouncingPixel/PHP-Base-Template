@@ -157,4 +157,20 @@ $result = $mailer->send($message);
  }
  ```
 
- 
+
+ **Twig** : _The flexible, fast, and secure template engine for PHP. The Twig library is backed by the creators of the Symfony framework. We have used Twig templates in specific situations, where building an unlimited amount of pages, dynamically, based on data is necessary._
+
+ [Twig Documentation](http://twig.sensiolabs.org/doc/1.x/)
+
+ **Example: Configure Twig Views**
+
+ ```
+ // Setting Up Twig Templates
+ require_once '../vendor/autoload.php';
+ Twig_Autoloader::register();
+
+ // Establish and load the views directory.
+ // The views directory is where the ".twig" files are served from
+ $loader = new Twig_Loader_Filesystem(__DIR__ . '/views');
+
+ ```
