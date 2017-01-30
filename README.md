@@ -77,4 +77,31 @@ Site:
   **config.php** : _This file serves a couple different functions.  First, it is used to establish the site directory/file_ **BASE** _via the helpers.php file. It also servers as the main file to define_ **$GLOBAL** _variables for the site. The most important global variables that are defined are the_ **$PIECES** _which are used to define the database connection values for authentication.  This file can also be used to define session names and error reporting for development enviorments._
 
 
-### Other Tools & Dependencies
+
+### Other Tools & Dependencies:
+
+  **Swiftmailer** : _A free, feature-rich PHP mailer. Swift Mailer integrates into any web app written in PHP 5, offering a flexible object-oriented approach to sending emails with a multitude of features. We have used Swift Mailer on previous projects with good results.  Swift Mailer's library can be installed using Composer._
+
+  **Example:**
+
+```
+// Adding the swiftmailer vender
+require_once 'vendor/autoload.php';
+
+// Setting up the SMTP server, port, SSL, email-username and password
+$transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+              ->setUsername('user@gmail.com')
+              ->setPassword('password');
+
+// Setting the mailer instance
+$mailer = Swift_Mailer::newInstance($transport);
+
+// Defining who the message is from, who it's going to and the message body
+$message = Swift_Message::newInstance('New Message')
+						  ->setFrom(array('user@gmail.com' => 'From Email Common Name'))
+						  ->setTo(array('to-email@gmail.com'))
+						  ->setBody('Put The Email Message Here');
+
+// Sending the message
+$result = $mailer->send($message);
+```
