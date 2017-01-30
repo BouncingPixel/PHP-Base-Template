@@ -82,10 +82,12 @@ Site:
 
   **Swiftmailer** : _A free, feature-rich PHP mailer. Swift Mailer integrates into any web app written in PHP 5, offering a flexible object-oriented approach to sending emails with a multitude of features. We have used Swift Mailer on previous projects with good results.  Swift Mailer's library can be installed using Composer._
 
+  [Documentation](http://swiftmailer.org/docs/introduction.html)
+
   **Example:**
 
 ```
-// Adding the swiftmailer vender
+// Adding vendor autoload to access the Swift Mailer vendor
 require_once 'vendor/autoload.php';
 
 // Setting up the SMTP server, port, SSL, email-username and password
