@@ -54,7 +54,8 @@ Site:
 │ │ ├── scripts/
 │ │ └── styles/
 │ ├── libs/ (Any extra libraries or scripts)
-│ ├── partials/
+│ ├── pieces/ (The helper files directory)
+│ ├── partials/ (Directory of any server-side includes)
 │ ├── templates/
 │ ├── .htaccess (Apache config and re-write rules)
 │ ├── config.php (Site-wide Database Connection values)
