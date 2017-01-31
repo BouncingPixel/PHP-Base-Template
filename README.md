@@ -173,9 +173,11 @@ $result = $mailer->send($message);
  // The views directory is where the ".twig" files are served from
  $loader = new Twig_Loader_Filesystem(__DIR__ . '/views');
 
+ // Adding Twing setting for a template cache
  $twigSettings = array(
    'cache' => __DIR__ . '/path/to/compilation/cache'
  );
 
+ // Using the twigSettings and loader to establish a new Twig instance
  $twig = new Twig_Environment($loader, $twigSettings);
  ```
