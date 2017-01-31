@@ -180,4 +180,11 @@ $result = $mailer->send($message);
 
  // Using the twigSettings and loader to establish a new Twig instance
  $twig = new Twig_Environment($loader, $twigSettings);
+
+ // Render (output) a Twig template
+ // An Example of values that could be passed into the render array
+ echo $twig->render('index.twig', array(
+    'title' => 'My First Twig Template',
+    'content' => 'Hello World!'
+  ));
  ```
