@@ -18,6 +18,7 @@ Site:
  ====================
  - Hosting - [Service Name w/ link](link) ( Paid / Free )
  - Domain Registrar - [Service Name w/ link](link) ( Paid / Free )
+ - DNS Configuration - [Service Name w/ link](link) ( Paid / Free )
 
  SERVICES:
  =========
