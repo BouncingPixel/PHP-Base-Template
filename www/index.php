@@ -1,10 +1,10 @@
 <?php
 // This includes the helper functions
-include("pieces/helpers.php") ;
+include("../config/helpers.php");
 global $helper;
-$helper = new Helpers( "." );
 // The helper function for MySQL database queries
-$helper->IncludePiece( "mysqliData" );
+include("../config/mysqliData.php");
+include("../config/dataStore.php");
 global $PIECES;
 
 // The helper function to set up a session
