@@ -1,14 +1,15 @@
 <?php
 // This includes the helper functions
 include("../config/helpers.php");
-global $helper;
-// The helper function for MySQL database queries
-include("../config/mysqliData.php");
-include("../config/dataStore.php");
+$helper = new Helpers();
+// The helper function for MySQL / MongoDB database connections (queries)
+// include("../config/mysqliData.php");
+// include("../config/mongoData.php");
+// include("../config/dataStore.php");
 global $PIECES;
 
 // The helper function to set up a session
-$helper->CheckSession( false );
+$helper->CheckSession();
 
 // The database connection helper using the $PICECES defined in the config.php page.
 // Un-comment this line when you want to establish a database connection and run queries.

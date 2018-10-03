@@ -1,17 +1,32 @@
 <?php
 	class Helpers {
 		public function __construct( $path = "." ) {
-			$this->basePath = $path;
-			include( "$this->basePath/config.php" );
+			$this->basePath = dirname(__DIR__);
+			include( $this->basePath."/config/config.php" );
 		}
-
 		public function CheckSession( $mustBeLoggedIn = false ) {
-
 			// create a session if one doesn't exist
-			session_start();
-
+			if( ! isset($_SESSION) ){
+				session_name( "tHisIStheBestSessionName05032018" );
+				session_start();
+				//(24 * 3600)
+			}
+			// sets the default sessions
+			if( !isset($_SESSION['loggedIn']) ) {
+				$_SESSION['loggedIn'] = false;
+			}
+			if( !isset($_SESSION['superUser']) ) {
+				$_SESSION['superUser'] = false;
+			}
+			if( $mustBeLoggedIn && $_SESSION['loggedIn'] == false ) {
+				$_SESSION['notice'] = "You must be logged in.";
+				$file = $_SERVER["SCRIPT_NAME"];
+				// We need to redirect to login page(index.php) every time except when the request comes from itself.
+				if( $pfile != "/index.php" ) {
+					header("Location: /index.php");
+				}
+			}
 		}
-
 		public function DisplaySessionMessages() {
 			$messages = "";
 			if( isset( $_SESSION['error'] ) ) {
@@ -24,69 +39,13 @@
 			}
 			return $messages;
 		}
-
-		// HTTP or HTTPS
 		public function ForceSSL() {
-			$newurl = "";
-			if(stripos($_SERVER['REQUEST_URI'], substr("ssl", 0))) {
+			if($_SERVER["HTTPS"] != "on") {
 				$newurl = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-			}	else {
-				$_SERVER['HTTPS'] = "off";
-				$newurl = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-		 	}
-		 	header("Location: ".$newurl);
+				header("Location: $newurl");
+				exit();
+			}
 		}
-
-		// Check for Facebook Leads
-		public function ForcePPCID() {
-			if(stripos($_SERVER['REQUEST_URI'], substr("fb", 0))) {
-				// create a session if one doesn't exist
-				session_name( 'FHA-FB' );
-				session_start();
-
-				// sets the default sessions
-				$_SESSION['PPCID'] = "108";
-				$_SESSION['CID'] = "Facebook";
-		 	}
-		 	header("Location: index.php");
-		}
-
-		public function IncludeHTML( $file ) {
-			readfile( "$this->basePath/includes/$file.html" );
-		}
-
-		public function IncludePHP( $file ) {
-			include_once( "$this->basePath/includes/$file.php" );
-		}
-
-		public function IncludePiece( $file ) {
-			$helper = $this;
-			include_once( "$this->basePath/pieces/$file.php" );
-		}
-
-		public function IncludeLib( $file ) {
-			$helper = $this;
-			include_once( "$this->basePath/libs/$file.php" );
-		}
-
-		public function ConvertForDisplay( $string ) {
-			return nl2br( $string );
-		}
-
-		public function getFullPath() {
-			return $this->basePath;
-		}
-
-		public function getUrl(  ){
-			$url = $_SERVER["REQUEST_URI"];
-			$pcs = explode( '/', $_SERVER["REQUEST_URI"]);
-			return array_pop ( $pcs );
-		}
-
-    public function ConvertForListDisplay( $string ) {
-      return '<li>' . str_replace("\n", '</li><li>', $string) . '</li>';
-    }
-
 		public function DisplayAssetUpload( $folder, $file ) {
 			if(isset($folder) && $folder != "") {
 				echo "/".$folder."/assets/definitions/".$file;
@@ -94,14 +53,82 @@
 				echo "/assets/definitions/".$file;
 			}
 		}
-
+		public function IncludeHTML( $file ) {
+			readfile( "$this->basePath/includes/$file.html" );
+		}
+		public function IncludePHP( $file ) {
+			include_once( "$this->basePath/includes/$file.php" );
+		}
+		public function IncludePiece( $file ) {
+			$helper = $this;
+			include_once( "$this->basePath/www/pieces/$file.php" );
+		}
+		public function IncludeLib( $file ) {
+			$helper = $this;
+			// include_once( "$this->basePath/libs/$file.php" );
+			include_once( "$file.php" );
+		}
+		public function ConvertForDisplay( $string ) {
+			return nl2br( $string );
+		}
+		public function getFullPath() {
+			return "https://".$_SERVER['HTTP_HOST'];
+		}
+		public function getUrl(  ){
+			$url = $_SERVER["REQUEST_URI"];
+			$pcs = explode( '/', $_SERVER["REQUEST_URI"]);
+			return array_pop ( $pcs );
+		}
+		// MongoDB Helpers
+		public function getTimeStringMongo( $dVals ){
+			return date("m/d/Y", $dVals->sec);
+		}
+		public function makeMongoID( $mid ){
+			return new MongoID( $mid );
+		}
+		public function makeMongoDate( $dVals ){
+			return new MongoDate( $dVals );
+		}
+		// Date-Time Helpers
+		public function getTimeString( $dVals ){
+			return date("m/d/Y", strtotime($dVals));
+		}
+		public function ConvertTimeDatabase( $dVals ){
+			$db_date = '';
+			if( isset( $dVals ) ) {
+				$db_date  = DateTime::createFromFormat('m-d-Y', $dVals );
+			}
+			return date_format($db_date, 'Y-m-d H:i:s');
+		}
+		// Character Encoding Helpers
+		public function ConvertUnicode( $string ) {
+		return html_entity_decode(preg_replace("/U\+([0-9A-F]{4,5})/", "&#x\\1;", $string), ENT_NOQUOTES, 'UTF-8');
+		}
+		public function ConvertOthers( $string ) {
+		return html_entity_decode(preg_replace("/â€+((œ)|(™)|(˜)|(“)|(){1,5})/", "&#x\\1;", $string), ENT_NOQUOTES, 'UTF-8');
+		}
+		public function ConvertAscii( $string ) {
+		return iconv("windows-1252", "utf-8", $string);
+		}
+		public function ConvertWindows( $string ) {
+		return iconv("ISO-8859-1", "UTF-8", $string);
+		}
+		public function ReplaceQuotes( $string ) {
+			$doubleQuotes = array('â€œ','â€');
+			$singleQuotes = array('â€™','â€˜');
+		return str_replace($tags, "'", $string);
+		}
+		public function ConvertForListDisplay( $string ) {
+		return '<li>' . str_replace("\n", '</li><li>', $string) . '</li>';
+		}
 		public function DisplayTemplate( $variableArray = array() ) {
-			$message = Helpers::DisplaySessionMessages(); $helper = $this; extract( $variableArray, EXTR_REFS );
+			$message = Helpers::DisplaySessionMessages(); 
+			extract( $variableArray, EXTR_REFS );
 			ob_start();
-			include( "./templates/$template.php" );
+			include( $this->basePath."/www/templates/$template.php" );
 			return ob_get_clean();
 		}
-
+		
 		private $basePath;
 	}
 ?>

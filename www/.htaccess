@@ -9,8 +9,10 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
 RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301,NE]
 
-# Never allow access to the config file
-RewriteRule ^config((.*)|())$ https://%{HTTP_HOST}/ [L,R=301]
+# Never Use the naked domain and Remove PHP extension
+RewriteCond %{THE_REQUEST} \.(php|cfm)[\s?] [NC]
+RewriteCond %{DOCUMENT_ROOT}/$1\.php -f [NC]
+RewriteRule ^(.+?)\.(cfm|php)$ /$1 [R=301,L,NE]
 
 # Unless directory, remove trailing slash
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -20,3 +22,6 @@ RewriteRule ^(.*)/$ $1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1\.php -f [NC]
 RewriteRule ^(.+?)/?$ $1.php [L]
+
+# Never allow access to the config file
+RewriteRule ^config((.*)|())$ https://%{HTTP_HOST}/ [L,R=301]
