@@ -1,11 +1,11 @@
 {
   "config": {
-		"vendor-dir": "www/vendor"
+    "vendor-dir": "www/vendor"
   },
-  "require" : {
-    "php": "7.x",
-    "mongodb/mongodb": "1.0.x",
-    "ext-mongodb": "^1.1.8"
+  "require": {
+    "php": "7.1.x",
+    "mongodb/mongodb": "^1.0.2",
+    "ext-mongodb": "1.5.x"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
