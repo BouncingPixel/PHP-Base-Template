@@ -2,18 +2,12 @@
 // This includes the helper functions
 include("../config/helpers.php");
 $helper = new Helpers();
-// The helper function for MySQL / MongoDB database connections (queries)
-// include("../config/mysqliData.php");
+// The helper function for MongoDB database connections (queries)
 // include("../config/mongoData.php");
-// include("../config/dataStore.php");
 global $PIECES;
 
 // The helper function to set up a session
 $helper->CheckSession();
-
-// The database connection helper using the $PICECES defined in the config.php page.
-// Un-comment this line when you want to establish a database connection and run queries.
-// $dataConnection = new MysqliData( $PIECES[ 'databaseLocation' ], $PIECES[ 'databaseUserName' ], $PIECES[ 'databasePassword' ], $PIECES[ 'database' ] );
 
 // Build the $page array
 $page = array();
@@ -29,7 +23,7 @@ ob_start(); ?>
 
 		<br />
 
-		<p>This is a basic PHP template (and file structure) we use.<br />It is built to be responsive in design, can use MySQL as its database resource and is deployable on Heroku.</p>
+		<p>This is a basic PHP template (and file structure) we use.<br />It is built to be responsive in design, can use MongoDB as it's database resource and is deployable on Heroku.</p>
 
 
 	</div>
