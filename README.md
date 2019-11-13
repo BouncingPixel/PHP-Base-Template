@@ -47,24 +47,30 @@ Site:
 
 ```
 / (project root)
-├── mockups/ ( PSD / EPS GRAPHICS FILES )
-├── working/ ( PSD / EPS GRAPHICS FILES )
-├─┬ www/ (web root)
-│ ├─┬ assets/ (All site assets and scripts)
-│ │ ├── images/
-│ │ ├── scripts/
-│ │ └── styles/
-│ ├── libs/ (Any extra libraries or scripts)
-│ ├── pieces/ (The helper files directory)
-│ ├── partials/ (Directory of any server-side includes)
-│ ├── templates/
-│ ├── .htaccess (Apache config and re-write rules)
-│ ├── config.php (Site-wide Database Connection values)
-│ └── index.php
+├── Procfile (Heroku Config File)
 ├── .gitignore
 ├── .slugignore (Heroku ignored files and directories)
-├── Procfile (Heroku Config File)
-└── composer.json (Additional Tools and dependency)
+├── README.md
+├── composer.json (Additional Tools and dependency)
+├── composer.lock (Additional Tools and dependency)
+├── config/ (Site-wide Database Connection values & helper functions) 
+│   ├── config.php
+│   ├── dataStore.php
+│   ├── helpers.php
+│   ├── mongoData.php
+│   └── stateHelper.php
+├── mockups/ ( PSD / EPS GRAPHICS FILES )
+├── working/ ( PSD / EPS GRAPHICS FILES )
+└── www/
+    ├── .htaccess (Apache config and re-write rules)
+    ├── assets/ (All site assets and scripts)
+    │   ├── images/
+    │   ├── scripts/
+    │   └── styles/
+    ├── index.php
+    ├── partials/ (Directory of any server-side includes)
+    └── templates/
+        └── template-basic.php
 ```
 
  **Directory / File Descriptions:**
