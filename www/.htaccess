@@ -7,7 +7,13 @@ RewriteBase /
 
 # Never Use the naked domain
 RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301,NE]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301,NE]
+
+# Force HTTPS
+# does a check for fha.com just to avoid ssl on dev
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 
 # Never Use the naked domain and Remove PHP extension
 RewriteCond %{THE_REQUEST} \.(php|cfm)[\s?] [NC]
