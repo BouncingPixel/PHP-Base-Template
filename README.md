@@ -73,7 +73,7 @@ Site:
         └── template-basic.php
 ```
 
-**Directory / File Descriptions:**
+## Directory / File Descriptions:
 
 **libs** : _This directory is where we place extra PHP (or JavaScript) libraries. Typically these sort of tools/dependencies are now installed via Composer.  However, there are times when it's beneficial to store authentication or self-defined tools here._
 
@@ -84,7 +84,7 @@ Site:
 **config.php** : _This file serves a couple different functions.  First, it is used to establish the site directory/file_ **BASE** _via the helpers.php file. It also servers as the main file to define_ **$GLOBAL** _variables for the site. The most important global variables that are defined are the_ **$PIECES** _which are used to define the database connection values for authentication.  This file can also be used to define session names and error reporting for development enviorments._
 
 
-**PHP Dependencies:**
+## PHP Dependencies:
 
 **Composer**
 
