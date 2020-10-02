@@ -73,17 +73,65 @@ Site:
         └── template-basic.php
 ```
 
- **Directory / File Descriptions:**
+**Directory / File Descriptions:**
 
-  **libs** : _This directory is where we place extra PHP (or JavaScript) libraries. Typically these sort of tools/dependencies are now installed via Composer.  However, there are times when it's beneficial to store authentication or self-defined tools here._
+**libs** : _This directory is where we place extra PHP (or JavaScript) libraries. Typically these sort of tools/dependencies are now installed via Composer.  However, there are times when it's beneficial to store authentication or self-defined tools here._
 
-  **pieces** : _This directory is where all the helper and database usability files are stored.  The_ **helpers.php** _file contains a helpers class, along with a series of public functions that help display the template-based pages and other useful functions to make coding easier.  The_ **msqliData.php** _has several pre-defined MySQL queries to help in accessing data and displaying it on a page easier._
+**pieces** : _This directory is where all the helper and database usability files are stored.  The_ **helpers.php** _file contains a helpers class, along with a series of public functions that help display the template-based pages and other useful functions to make coding easier.  The_ **msqliData.php** _has several pre-defined MySQL queries to help in accessing data and displaying it on a page easier._
 
-  **templates** : _Where the page templates for the site are stored. Typically, the page templates are the outer shell of the page (containing the_ **HTML, HEAD & BODY** _tags). The stylesheets, JavaScripts and any analytics tags are placed in the template files. The individual pages themselved (_ **IE - index.php** _) define the interior content of each the page._
+**templates** : _Where the page templates for the site are stored. Typically, the page templates are the outer shell of the page (containing the_ **HTML, HEAD & BODY** _tags). The stylesheets, JavaScripts and any analytics tags are placed in the template files. The individual pages themselved (_ **IE - index.php** _) define the interior content of each the page._
 
-  **config.php** : _This file serves a couple different functions.  First, it is used to establish the site directory/file_ **BASE** _via the helpers.php file. It also servers as the main file to define_ **$GLOBAL** _variables for the site. The most important global variables that are defined are the_ **$PIECES** _which are used to define the database connection values for authentication.  This file can also be used to define session names and error reporting for development enviorments._
+**config.php** : _This file serves a couple different functions.  First, it is used to establish the site directory/file_ **BASE** _via the helpers.php file. It also servers as the main file to define_ **$GLOBAL** _variables for the site. The most important global variables that are defined are the_ **$PIECES** _which are used to define the database connection values for authentication.  This file can also be used to define session names and error reporting for development enviorments._
 
 
+**PHP Dependencies:**
+
+**Composer**
+
+In the root repo directory, open Terminal / CMD Prompt, and run this code:
+
+```bash
+composer install --ignore-platform-reqs
+```
+
+## IIS Configuration / Local Windows Development
+
+1. For full communication and configuration with IIS running on Windows, make sure to have `web.config` in the web root (www) directory:
+
+Default Web.config Example:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <defaultDocument>
+            <files>
+                <add value="index.php" />
+            </files>
+        </defaultDocument>
+        <rewrite>
+            <rules>
+                <clear />
+                <rule name="PHP Redirect Rule" stopProcessing="true">
+                    <match url="^([A-Za-z0-9_\-]+).php((\?.*)|())$" />
+                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+                    <action type="Redirect" url="{R:1}{R:2}" />
+                </rule>
+                <rule name="PHP Re-write">
+                    <match url="^([A-Za-z0-9_\-]+)((\?.*)|())$" />
+                    <action type="Rewrite" url="{R:1}.php{R:2}" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
+```
+
+2. In IIS, make sure the web site, indicated by the blue globe icon, has the security privileges for this user:
+
+```
+IIS_IUSRS
+```
 
 ### Other Tools & Dependencies:
 
