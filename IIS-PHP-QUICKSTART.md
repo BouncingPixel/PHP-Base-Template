@@ -4,7 +4,7 @@ IIS PHP QUICK START GUIDE
 ## Set Up Steps
 
 - Clone your repo into this ditectory - `C:\inetpub\projects\`
-- For full communication and configuration with IIS running on Windows, make sure to have `web.config` in the web root (www) directory:
+- For full communication and configuration with IIS running on Windows, make sure to have `web.config` in the [web root (www) directory](https://github.com/BouncingPixel/PHP-Base-Template/blob/master/www/web.config):
 
   **Default Web.config Example:**
 
