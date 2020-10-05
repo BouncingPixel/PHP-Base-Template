@@ -43,7 +43,7 @@ IIS PHP QUICK START GUIDE
 
 - Start IIS
   - Click on the `Sites` folder on the far left, under `Connections`
-  - Click `Add Website` on the far upper right, under `Actions`.
+  - Click `View Sites` and `Add Website` on the far upper right, under `Actions`.
   - Enter Site Name, Physical Path (Example: `C:\inetpub\projects\<YOUR REPO>\www`) and Port number, then click OK
   - Click on `Browse *:(port number)` under `Browse Website` and the site will be displayed in the web browser.
 
