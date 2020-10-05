@@ -83,56 +83,6 @@ Site:
 
 **config.php** : _This file serves a couple different functions.  First, it is used to establish the site directory/file_ **BASE** _via the helpers.php file. It also servers as the main file to define_ **$GLOBAL** _variables for the site. The most important global variables that are defined are the_ **$PIECES** _which are used to define the database connection values for authentication.  This file can also be used to define session names and error reporting for development enviorments._
 
-
-## PHP Dependencies:
-
-**Composer**
-
-In the root repo directory, open Terminal / CMD Prompt, and run this code:
-
-```bash
-composer install --ignore-platform-reqs
-```
-
-## IIS Configuration / Local Windows Development
-
-1. For full communication and configuration with IIS running on Windows, make sure to have `web.config` in the web root (www) directory:
-
-Default Web.config Example:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <defaultDocument>
-            <files>
-                <add value="index.php" />
-            </files>
-        </defaultDocument>
-        <rewrite>
-            <rules>
-                <clear />
-                <rule name="PHP Redirect Rule" stopProcessing="true">
-                    <match url="^([A-Za-z0-9_\-]+).php((\?.*)|())$" />
-                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
-                    <action type="Redirect" url="{R:1}{R:2}" />
-                </rule>
-                <rule name="PHP Re-write">
-                    <match url="^([A-Za-z0-9_\-]+)((\?.*)|())$" />
-                    <action type="Rewrite" url="{R:1}.php{R:2}" />
-                </rule>
-            </rules>
-        </rewrite>
-    </system.webServer>
-</configuration>
-```
-
-2. In IIS, make sure the web site, indicated by the blue globe icon, has the security privileges for this user:
-
-```
-IIS_IUSRS
-```
-
 ### Other Tools & Dependencies:
 
   **Swiftmailer** : _A free, feature-rich PHP mailer. Swift Mailer integrates into any web app written in PHP 5, offering a flexible object-oriented approach to sending emails with a multitude of features. We have used Swift Mailer on previous projects with good results.  Swift Mailer's library can be installed using Composer._
