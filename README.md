@@ -63,7 +63,8 @@ Site:
 ├── working/ ( PSD / EPS GRAPHICS FILES )
 └── www/
     ├── .htaccess (Apache config and re-write rules)
-    ├── assets/ (All site assets and scripts)
+    ├── assets/ (All site assets, fonts and scripts)
+    │   ├── fonts/
     │   ├── images/
     │   ├── scripts/
     │   └── styles/
