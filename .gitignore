@@ -62,3 +62,7 @@ npm-debug*
 ##########################
 .ocproject
 .pki
+
+# VS Code Settings #
+####################
+.vscode

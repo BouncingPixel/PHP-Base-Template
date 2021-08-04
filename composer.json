@@ -1,5 +1,5 @@
 {
-  "name": "PHP-Base-Template",
+  "name": "bouncingpixel/php-base-template",
   "description": "A base template for starting PHP projects at Bouncing Pixel, that use MongoDB and deploy on Heroku",
   "config": {
     "vendor-dir": "www/vendor"

@@ -13,8 +13,14 @@
 
 	<!-- ADD FAVICON -->
 	<link type="image/x-icon" href="favicon.ico" rel="shortcut icon" media="all">
-	<!-- ADD SITE SPECIFIC GOOGLE FONTS LINK -->
-	<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+
+    <!-- ADD FONTS -->
+    <link rel='preload' href='../assets/fonts/source-sans-pro/source-sans-pro-v14-latin-regular.woff2' as='font' type='font/woff2' crossorigin='anonymous'/>
+	<link rel='preload' href='../assets/fonts/source-sans-pro/source-sans-pro-v14-latin-600.woff2' as='font' type='font/woff2' crossorigin='anonymous'/>
+	<link rel='preload' href='../assets/fonts/source-sans-pro/source-sans-pro-v14-latin-700.woff2' as='font' type='font/woff2' crossorigin='anonymous'/>
+	<link rel='preload' href='../assets/fonts/roboto/roboto-v27-latin-regular.woff2' as='font' type='font/woff2' crossorigin='anonymous'/>
+    <link rel='preload' href='../assets/fonts/roboto/roboto-v27-latin-500.woff2' as='font' type='font/woff2' crossorigin='anonymous'/>
+	
 	<!-- MAIN STYLESHEET WITH RESPONSIVE BREAK-POINTS FOR TABLET AND PHONE -->
 	<link type="text/css" href="assets/styles/global-responsive.css" rel="stylesheet" media="all" />
 
